@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Please Forgive Me</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    background: #ffe6e6;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:0;
+}
+
+.container{
+    text-align:center;
+    background:white;
+    padding:40px;
+    border-radius:12px;
+    box-shadow:0 10px 20px rgba(0,0,0,0.15);
+    width:400px;
+}
+
+h1{
+    color:#e63946;
+}
+
+.buttons{
+    margin-top:25px;
+    position:relative;
+    height:100px;
+}
+
+button{
+    padding:10px 20px;
+    font-size:16px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+#yes{
+    background:#2ecc71;
+    color:white;
+}
+
+#no{
+    background:#e63946;
+    color:white;
+    position:absolute;
+    left:200px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>Hey… I'm Sorry 😅</h1>
+
+<p id="question">
+I messed up a little (okay maybe a lot).  
+Will you forgive me?
+</p>
+
+<div class="buttons">
+<button id="yes" onclick="forgive()">Yes ❤️</button>
+<button id="no">No 😤</button>
+</div>
+
+</div>
+
+<script>
+
+const noButton = document.getElementById("no");
+const question = document.getElementById("question");
+
+let noCount = 0;
+
+noButton.addEventListener("mouseover", () => {
+
+    noCount++;
+
+    if(noCount === 1){
+        question.innerText = "Are you sure about that? 🤨";
+    }
+    else if(noCount === 2){
+        question.innerText = "Really sure? Think carefully 😅";
+    }
+    else if(noCount === 3){
+        question.innerText = "Okay now you're just being mean 😭";
+    }
+    else{
+        question.innerText = "Just press YES already 😂";
+    }
+
+    const x = Math.random() * 250;
+    const y = Math.random() * 60;
+
+    noButton.style.left = x + "px";
+    noButton.style.top = y + "px";
+
+});
+
+function forgive(){
+    document.body.innerHTML = `
+        <div style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:Arial;">
+            <h1>Yay! Thank you for forgiving me ❤️</h1>
+        </div>
+    `;
+}
+
+</script>
+
+</body>
+</html>
